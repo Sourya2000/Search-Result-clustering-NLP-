@@ -1,0 +1,7 @@
+Variable may refer to:
+
+Variable (computer science), a symbolic name associated with a value and whose associated value may be changed
+Variable (mathematics), a symbol that represents a quantity in a mathematical expression, as used in many sciences
+Variable (research), a logical set of attributes
+Variable star, a type of astronomical star
+"The Variable", an episode of the television series Lost
