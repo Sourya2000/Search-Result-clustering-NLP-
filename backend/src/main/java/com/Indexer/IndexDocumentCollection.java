@@ -13,12 +13,7 @@ import java.nio.file.attribute.BasicFileAttributes;
 import java.util.EnumSet;
 
 import org.apache.commons.io.FileUtils;
-import org.apache.lucene.analysis.core.LowerCaseFilterFactory;
-import org.apache.lucene.analysis.core.StopFilterFactory;
 import org.apache.lucene.analysis.custom.CustomAnalyzer;
-import org.apache.lucene.analysis.en.PorterStemFilterFactory;
-import org.apache.lucene.analysis.standard.StandardFilterFactory;
-import org.apache.lucene.analysis.standard.StandardTokenizerFactory;
 import org.apache.lucene.document.Document;
 import org.apache.lucene.document.Field;
 import org.apache.lucene.document.TextField;
@@ -28,6 +23,7 @@ import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.FSDirectory;
 
 import com.Constants.ProjectConstants;
+import com.analyser.MyCustomAnalyser;
 
 
 public class IndexDocumentCollection {
@@ -39,7 +35,7 @@ public class IndexDocumentCollection {
 //	    Clear Index Directory before indexing documents 
 	    try {
             clearDirectory(indexPath);
-            System.out.println("Indexed Directory cleared successfully.");
+            System.out.println("Previously Indexed files in Index Directory cleared successfully.");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -50,7 +46,7 @@ public class IndexDocumentCollection {
 	}
 	
 	private static void indexer(Directory indexDir) throws IOException {
-	    CustomAnalyzer customAnalyzer = getAnalyzer();
+	    CustomAnalyzer customAnalyzer = MyCustomAnalyser.getAnalyzer();
 	    IndexWriterConfig config = new IndexWriterConfig(customAnalyzer);
 	    IndexWriter iwriter = new IndexWriter(indexDir, config);
 	    File documentCollectionDir = new File(ProjectConstants.DOCUMENTS_COLLECTION_PATH);
@@ -70,17 +66,6 @@ public class IndexDocumentCollection {
 	    	
 		}
 	  	iwriter.close();
-	}
-	
-	private static CustomAnalyzer getAnalyzer() throws IOException {
-		CustomAnalyzer custAnalyser = CustomAnalyzer.builder()
-										  .withTokenizer(StandardTokenizerFactory.class)
-				   					      .addTokenFilter(StandardFilterFactory.class)
-				   					      .addTokenFilter(LowerCaseFilterFactory.class)
-				   					      .addTokenFilter(StopFilterFactory.class)
-				   					      .addTokenFilter(PorterStemFilterFactory.class)
-				   					      .build();
-		return custAnalyser;
 	}
 	
     private static void clearDirectory(Path directory) throws IOException {
