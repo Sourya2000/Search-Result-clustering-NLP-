@@ -22,14 +22,14 @@ import org.apache.lucene.index.IndexWriterConfig;
 import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.FSDirectory;
 
-import com.Constants.ProjectConstants;
+import com.Constants.Constants;
 import com.analyser.MyCustomAnalyser;
 
 
 public class IndexDocumentCollection {
 	
 	public static void indexDocuments() throws IOException {
-		Path indexPath = Paths.get(ProjectConstants.INDEXED_DOCUMENTS_PATH);
+		Path indexPath = Paths.get(Constants.INDEXED_DOCUMENTS_PATH);
 	    Directory indexDir = FSDirectory.open(indexPath);
 	    
 //	    Clear Index Directory before indexing documents 
@@ -49,7 +49,7 @@ public class IndexDocumentCollection {
 	    CustomAnalyzer customAnalyzer = MyCustomAnalyser.getAnalyzer();
 	    IndexWriterConfig config = new IndexWriterConfig(customAnalyzer);
 	    IndexWriter iwriter = new IndexWriter(indexDir, config);
-	    File documentCollectionDir = new File(ProjectConstants.DOCUMENTS_COLLECTION_PATH);
+	    File documentCollectionDir = new File(Constants.DOCUMENTS_COLLECTION_PATH);
 	    File[] documentFiles = documentCollectionDir.listFiles();
 	    
 //	    Write the documents to the index
@@ -60,12 +60,12 @@ public class IndexDocumentCollection {
 		    	
 //	    		Content of the File
 	    		String fileExtract = FileUtils.readFileToString(documentFile, StandardCharsets.UTF_8);
-	    		Field docExtractField =  new Field(ProjectConstants.DOC_FIELD_EXTRACT_STRING, fileExtract, TextField.TYPE_STORED);
+	    		Field docExtractField =  new Field(Constants.DOC_FIELD_EXTRACT_STRING, fileExtract, TextField.TYPE_STORED);
 	    		doc.add(docExtractField);
 		    	
 //		    	Name of the file 
-		    	String fileNameString = documentFile.getName().toString().replace(".txt", "");
-		    	Field docNameField = new Field(ProjectConstants.DOC_FIELD_NAME_STRING, fileNameString, TextField.TYPE_STORED);
+		    	String fileNameString = documentFile.getName().toString().replace(Constants.DOC_FILE_EXTENTSION_STRING, Constants.DOC_FILE_EXTN_REPLACEMENT_STRING);
+		    	Field docNameField = new Field(Constants.DOC_FIELD_NAME_STRING, fileNameString, TextField.TYPE_STORED);
 		    	doc.add(docNameField);
 		    	
 		    	iwriter.addDocument(doc);

@@ -19,12 +19,12 @@ import org.apache.lucene.search.similarities.ClassicSimilarity;
 import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.FSDirectory;
 
-import com.Constants.ProjectConstants;
+import com.Constants.Constants;
 import com.analyser.MyCustomAnalyser;
 
 public class DocumentSearch {
 	public List<RetrievedDocument> searchTopDocuments(String queryString, int numOfTopDocuments) throws IOException, ParseException {
-		Path indexPath = Paths.get(ProjectConstants.INDEXED_DOCUMENTS_PATH);
+		Path indexPath = Paths.get(Constants.INDEXED_DOCUMENTS_PATH);
 		Directory iReader = FSDirectory.open(indexPath);
 		DirectoryReader directoryReader = DirectoryReader.open(iReader);		
 		IndexSearcher indexSearcher = new IndexSearcher(directoryReader);
@@ -32,7 +32,7 @@ public class DocumentSearch {
 		indexSearcher.setSimilarity(new ClassicSimilarity());
 		CustomAnalyzer customAnalyzer = MyCustomAnalyser.getAnalyzer();
 		
-		QueryParser parser = new QueryParser(ProjectConstants.DOC_FIELD_EXTRACT_STRING, customAnalyzer);
+		QueryParser parser = new QueryParser(Constants.DOC_FIELD_EXTRACT_STRING, customAnalyzer);
 		Query query = parser.parse(queryString);
 		
 //		Get top "n" documents into the collector
@@ -45,8 +45,8 @@ public class DocumentSearch {
 		for(ScoreDoc topDoc : topDocs) {
 			RetrievedDocument relDocument = new RetrievedDocument();
 			Document document = indexSearcher.doc(topDoc.doc);
-			relDocument.setTitle(document.get(ProjectConstants.DOC_FIELD_NAME_STRING));
-			relDocument.setContent(document.get(ProjectConstants.DOC_FIELD_EXTRACT_STRING));
+			relDocument.setTitle(document.get(Constants.DOC_FIELD_NAME_STRING));
+			relDocument.setContent(document.get(Constants.DOC_FIELD_EXTRACT_STRING));
 			relDocument.setScore(topDoc.score);
 			retrievedTopDocs.add(relDocument);
 		}
