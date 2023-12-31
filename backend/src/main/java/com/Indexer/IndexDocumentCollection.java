@@ -57,8 +57,17 @@ public class IndexDocumentCollection {
 	    	
 	    	try {
 	    		Document doc = new Document();
-		    	String fileExtract = FileUtils.readFileToString(documentFile, StandardCharsets.UTF_8);
-		    	doc.add(new Field("docExtract", fileExtract, TextField.TYPE_STORED));
+		    	
+//	    		Content of the File
+	    		String fileExtract = FileUtils.readFileToString(documentFile, StandardCharsets.UTF_8);
+	    		Field docExtractField =  new Field(ProjectConstants.DOC_FIELD_EXTRACT_STRING, fileExtract, TextField.TYPE_STORED);
+	    		doc.add(docExtractField);
+		    	
+//		    	Name of the file 
+		    	String fileNameString = documentFile.getName().toString().replace(".txt", "");
+		    	Field docNameField = new Field(ProjectConstants.DOC_FIELD_NAME_STRING, fileNameString, TextField.TYPE_STORED);
+		    	doc.add(docNameField);
+		    	
 		    	iwriter.addDocument(doc);
 			} catch (Exception e) {
 				e.printStackTrace();

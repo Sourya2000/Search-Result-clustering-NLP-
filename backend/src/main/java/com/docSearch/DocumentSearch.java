@@ -32,7 +32,7 @@ public class DocumentSearch {
 		indexSearcher.setSimilarity(new ClassicSimilarity());
 		CustomAnalyzer customAnalyzer = MyCustomAnalyser.getAnalyzer();
 		
-		QueryParser parser = new QueryParser("contents", customAnalyzer);
+		QueryParser parser = new QueryParser(ProjectConstants.DOC_FIELD_EXTRACT_STRING, customAnalyzer);
 		Query query = parser.parse(queryString);
 		
 //		Get top "n" documents into the collector
@@ -45,8 +45,8 @@ public class DocumentSearch {
 		for(ScoreDoc topDoc : topDocs) {
 			RetrievedDocument relDocument = new RetrievedDocument();
 			Document document = indexSearcher.doc(topDoc.doc);
-			relDocument.setTitle(document.get("title"));
-			relDocument.setContent(document.get("content"));
+			relDocument.setTitle(document.get(ProjectConstants.DOC_FIELD_NAME_STRING));
+			relDocument.setContent(document.get(ProjectConstants.DOC_FIELD_EXTRACT_STRING));
 			relDocument.setScore(topDoc.score);
 			retrievedTopDocs.add(relDocument);
 		}
