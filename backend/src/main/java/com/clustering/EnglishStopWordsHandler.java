@@ -5,7 +5,7 @@ import org.apache.lucene.analysis.core.StopAnalyzer;
 
 import weka.core.stopwords.StopwordsHandler;
 
-public class EnglishStopWordsHandler implements StopwordsHandler {
+class EnglishStopWordsHandler implements StopwordsHandler {
 
     public String[] getStopwords() {
         CharArraySet stopwordSet = StopAnalyzer.ENGLISH_STOP_WORDS_SET;

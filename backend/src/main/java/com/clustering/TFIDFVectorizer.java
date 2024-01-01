@@ -1,5 +1,6 @@
 package com.clustering;
 
+import weka.filters.Filter;
 import weka.filters.unsupervised.attribute.StringToWordVector;
 
 import java.util.ArrayList;
@@ -12,8 +13,8 @@ import weka.core.Instances;
 import com.Constants.Constants;
 import com.docSearch.RetrievedDocument;
 
-public class TFIDFVectorizer {
-	public void fitTransform() {
+class TFIDFVectorizer {
+	public Instances fitTransform(List<RetrievedDocument> retrievedDocuments) throws Exception {
 		StringToWordVector tfIdfVectorizer = new StringToWordVector();
 
 //      Config for StringToWordVector to set it as tf-idf vectorizer
@@ -27,15 +28,18 @@ public class TFIDFVectorizer {
 //        String[] stopwordsArray = stopwordSet.toArray(new String[0]);
 //        tfIdfVectorizer.setStemmer(new IteratedLovinsStemmer());
 //        tfIdfVectorizer.setStopwordsHandler(new EnglishStopWordsHandler());
-
-//        tfIdfVectorizer.setInputFormat(retrievedDocuments);
+		
+		Instances inputDataInstances = convertToWekaInstances(retrievedDocuments);
+        tfIdfVectorizer.setInputFormat(inputDataInstances);
+        Instances transformedDataInstances = Filter.useFilter(inputDataInstances, tfIdfVectorizer);
+        return transformedDataInstances;
 	}
 
 	private Instances convertToWekaInstances(List<RetrievedDocument> retrievedDocuments) {
 		// Create attributes for title, content, and score
 		Attribute docNameAttr = new Attribute(Constants.DOC_FIELD_NAME_STRING, (List<String>) null);
 		Attribute docExtractAttr = new Attribute(Constants.DOC_FIELD_EXTRACT_STRING, (List<String>) null);
-		Attribute scoreAttr = new Attribute("score");
+		Attribute scoreAttr = new Attribute(Constants.DOC_FIELD_SCORE_STRING);
 
 		// Create Instances object with the defined attributes
 		ArrayList<Attribute> attributes = new ArrayList<>();
@@ -43,7 +47,7 @@ public class TFIDFVectorizer {
 		attributes.add(docExtractAttr);
 		attributes.add(scoreAttr);
 
-		Instances wekaInstances = new Instances("DocumentInstances", attributes, retrievedDocuments.size());
+		Instances wekaInstances = new Instances(Constants.WEKA_INSTANCE_RELATION_NAME_STRING, attributes, retrievedDocuments.size());
 
 		// Add data to Instances
 		for (RetrievedDocument doc : retrievedDocuments) {

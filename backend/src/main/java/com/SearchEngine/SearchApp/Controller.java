@@ -7,7 +7,6 @@ import org.apache.lucene.queryparser.classic.ParseException;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.clustering.KmeansClustering;
 import com.docSearch.DocumentSearch;
 import com.docSearch.RetrievedDocument;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -35,7 +34,7 @@ public class Controller {
 //		return jsonString;
 		
 //		Step 3 - Cluster the documents 
-		KmeansClustering.clusterDocuments(retrievedDocuments);
+		
 		return "";
 		
 	}
