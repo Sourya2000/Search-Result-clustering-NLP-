@@ -23,3 +23,5 @@
 hs_err_pid*
 replay_pid*
 backend/src/main/resources/static/Wikipedia_topics/Wikipedia_topics
+backend/src/main/resources/static/IndexedDocuments/
+

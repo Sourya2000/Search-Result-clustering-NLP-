@@ -63,7 +63,7 @@ class TFIDFVectorizer {
 		}
 
 		// Set the class index (e.g., the 'score' attribute)
-		wekaInstances.setClassIndex(attributes.size() - 1);
+		wekaInstances.setClassIndex(-1);
 
 		return wekaInstances;
 	}

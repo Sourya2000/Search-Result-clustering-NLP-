@@ -10,6 +10,7 @@ import com.docSearch.RetrievedDocument;
 
 import weka.clusterers.SimpleKMeans;
 import weka.core.Instances;
+import weka.core.SelectedTag;
 
 class KmeansClustering extends ClusterAlgorithm{
 	
@@ -31,9 +32,10 @@ class KmeansClustering extends ClusterAlgorithm{
         // K-means clustering
         SimpleKMeans kMeans = new SimpleKMeans();
         kMeans.setNumClusters(numberOfClusters);
-        kMeans.buildClusterer(inputDataInstances);
         kMeans.setSeed(10);
         kMeans.setPreserveInstancesOrder(true);
+        kMeans.setInitializationMethod(new SelectedTag(SimpleKMeans.KMEANS_PLUS_PLUS, SimpleKMeans.TAGS_SELECTION));
+        kMeans.buildClusterer(inputDataInstances);
         
         int[] labels = kMeans.getAssignments();
         return constructResponse(retrievedDocuments, labels);
