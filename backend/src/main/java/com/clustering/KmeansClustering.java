@@ -78,6 +78,7 @@ class KmeansClustering extends ClusterAlgorithm{
 		if (inputParamsMap.containsKey(Constants.INPUT_PARAM_OPTIMAL_K_STRING) && 
         		(boolean) inputParamsMap.get(Constants.INPUT_PARAM_OPTIMAL_K_STRING)) {
 			System.out.println("");
+			// 	TODO
 			numberOfClusters = 0;
 		} else {
 			if ((int) inputParamsMap.get(Constants.INPUT_PARAM_K_VALUE_STRING) > retrievedDocumentsSize ) {
