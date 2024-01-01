@@ -66,8 +66,7 @@ class KmeansClustering extends ClusterAlgorithm{
 		Map<Integer, List<Map<String, Object>>> responseMap = new HashMap<>();
 		for (Map<String, Object> entry : responseDataStruct) {
 			int cluster = (int) entry.get(Constants.DOC_FIELD_CLUSTER_STRING);
-			responseMap.computeIfAbsent(cluster, k -> responseMap.getOrDefault(k, responseMap.get(k)));
-			responseMap.get(cluster).add(entry);
+			responseMap.computeIfAbsent(cluster, k -> new ArrayList<>()).add(entry);
 		}
 
 		return responseMap;
