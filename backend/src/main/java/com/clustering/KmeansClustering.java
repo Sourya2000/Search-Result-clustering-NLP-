@@ -32,6 +32,8 @@ class KmeansClustering extends ClusterAlgorithm{
         SimpleKMeans kMeans = new SimpleKMeans();
         kMeans.setNumClusters(numberOfClusters);
         kMeans.buildClusterer(inputDataInstances);
+        kMeans.setSeed(10);
+        kMeans.setPreserveInstancesOrder(true);
         
         int[] labels = kMeans.getAssignments();
         return constructResponse(retrievedDocuments, labels);

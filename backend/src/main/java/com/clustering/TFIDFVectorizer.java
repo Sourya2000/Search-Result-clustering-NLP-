@@ -22,7 +22,9 @@ class TFIDFVectorizer {
 		tfIdfVectorizer.setTFTransform(true);
 		tfIdfVectorizer.setLowerCaseTokens(true);
 		tfIdfVectorizer.setOutputWordCounts(false); // Output TF-IDF values instead of word counts
-
+		// Word vectors will be built based on the entire dataset without considering the class labels
+		tfIdfVectorizer.setDoNotOperateOnPerClassBasis(true);
+		
 //		Check if stopwords filtering and stemming helps in getting significantly better clusters representation
 //        CharArraySet stopwordSet = StopAnalyzer.ENGLISH_STOP_WORDS_SET;
 //        String[] stopwordsArray = stopwordSet.toArray(new String[0]);

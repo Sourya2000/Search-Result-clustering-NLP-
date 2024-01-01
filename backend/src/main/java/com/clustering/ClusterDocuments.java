@@ -19,7 +19,7 @@ public class ClusterDocuments {
 		
 		if (clusterAlgoClassMap.containsKey(inputParamsMap.get(Constants.INPUT_PARAM_CLUST_ALGO_STRING))){
 		// Get the relevant class of the given Algorithm
-			Class<? extends ClusterAlgorithm> clusterAlgorithmClass = clusterAlgoClassMap.get(Constants.INPUT_PARAM_CLUST_ALGO_STRING);
+			Class<? extends ClusterAlgorithm> clusterAlgorithmClass = clusterAlgoClassMap.get(inputParamsMap.get(Constants.INPUT_PARAM_CLUST_ALGO_STRING));
 		  	ClusterAlgorithm clusterAlgoObj = clusterAlgorithmClass.getDeclaredConstructor().newInstance();
 			return clusterAlgoObj.clusterDocuments(retrievedDocuments, inputParamsMap);
 		}else {

@@ -1,11 +1,13 @@
 package com.SearchEngine.SearchApp;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.Constants.Constants;
 import com.clustering.ClusterDocuments;
 import com.docSearch.DocumentSearch;
 import com.docSearch.RetrievedDocument;
@@ -27,8 +29,12 @@ public class Controller {
 		DocumentSearch documentSearch = new DocumentSearch();
 		List<RetrievedDocument> retrievedDocuments = documentSearch.searchTopDocuments("accounting", 20);
 		
+		Map<String, Object> inputParamsMapTest = new HashMap<String, Object>();
+		inputParamsMapTest.put(Constants.INPUT_PARAM_CLUST_ALGO_STRING, Constants.CLUSTERING_ALGO_KMEANS_STRING);
+		inputParamsMapTest.put(Constants.INPUT_PARAM_K_VALUE_STRING, 3);
+		
 //		Step 2 - Cluster the documents 
-		return ClusterDocuments.cluster(retrievedDocuments, inputParamsMap);
+		return ClusterDocuments.cluster(retrievedDocuments, inputParamsMapTest);
 		
 	}
 }
