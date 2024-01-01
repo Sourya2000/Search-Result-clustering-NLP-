@@ -11,8 +11,13 @@ import com.docSearch.RetrievedDocument;
 import weka.clusterers.SimpleKMeans;
 import weka.core.Instances;
 
-class KmeansClustering {
+class KmeansClustering extends ClusterAlgorithm{
+	
+//	KmeansClustering(Instances dataInstances) {
+//		super(dataInstances);
+//	}
 
+	@Override
 	public Map<Integer, List<Map<String, Object>>> clusterDocuments(List<RetrievedDocument> retrievedDocuments, 
 			Map<String, Object> inputParamsMap) throws Exception {
 		

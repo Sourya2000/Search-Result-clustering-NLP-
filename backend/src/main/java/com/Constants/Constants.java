@@ -16,6 +16,8 @@ public class Constants {
 	
 	public static final String INPUT_PARAM_OPTIMAL_K_STRING = "isOptK";
 	public static final String INPUT_PARAM_K_VALUE_STRING = "kVal";
-	public static final String INPUT_PARAM_ALGO_KMEAN_STRING = "kMeans";
+	public static final String INPUT_PARAM_CLUST_ALGO_STRING = "clustAlgo"; 
+	
+	public static final String CLUSTERING_ALGO_KMEANS_STRING = "kMeans";
 	
 }
