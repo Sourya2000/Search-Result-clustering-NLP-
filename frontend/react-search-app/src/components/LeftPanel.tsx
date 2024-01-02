@@ -5,7 +5,7 @@ import InputForm from "./InputForm";
 const LeftPanel: React.FC = () => {
   return (
     <div className={styles.leftPanel}>
-      <h2>Left Panel</h2>
+      <h2>Search</h2>
       <InputForm />
     </div>
   );
