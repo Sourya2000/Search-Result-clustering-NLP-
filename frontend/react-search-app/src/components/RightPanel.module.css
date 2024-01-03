@@ -1,0 +1,5 @@
+.rightPanel {
+  flex: 1;
+  border: 1px solid #ccc;
+  overflow: auto;
+}

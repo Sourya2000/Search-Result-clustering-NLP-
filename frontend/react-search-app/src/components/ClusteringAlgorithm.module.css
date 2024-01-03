@@ -1,0 +1,13 @@
+.radioBox {
+  width: auto;
+  text-align: center;
+  border: 1px solid #ccc;
+  padding: 5px;
+  margin: 10px;
+  border-radius: 8px;
+}
+
+.radioBoxHeading {
+  padding-bottom: 2px;
+  border-bottom: #2f74c0;
+}
