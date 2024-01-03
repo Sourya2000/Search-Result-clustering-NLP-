@@ -4,10 +4,12 @@ import NumberOfClusters from "./NumberOfClusters";
 
 interface ClusteringAlgorithmProps {
   onAlgorithmChange: (selectedAlgo: String | null) => void;
+  handleFormDataChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 const ClusteringAlgorithm = ({
   onAlgorithmChange,
+  handleFormDataChange,
 }: ClusteringAlgorithmProps) => {
   const [selectedAlgo, setSelectedAlgo] = useState<String | null>(null);
 
@@ -32,7 +34,7 @@ const ClusteringAlgorithm = ({
         <input
           type="radio"
           name="algorithm"
-          value="radio"
+          value="other"
           onChange={() => handleAlgorithmChange("other")}
         />
         Other
