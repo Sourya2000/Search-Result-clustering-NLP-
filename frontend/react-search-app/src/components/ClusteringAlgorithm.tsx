@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styles from "./ClusteringAlgorithm.module.css";
 import NumberOfClusters from "./NumberOfClusters";
 
-interface ClusteringAlgorithmProps {
+export interface ClusteringAlgorithmProps {
   onAlgorithmChange: (selectedAlgo: String | null) => void;
   handleFormDataChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
@@ -13,9 +13,10 @@ const ClusteringAlgorithm = ({
 }: ClusteringAlgorithmProps) => {
   const [selectedAlgo, setSelectedAlgo] = useState<String | null>(null);
 
-  const handleAlgorithmChange = (algorithm: String) => {
-    setSelectedAlgo(algorithm);
-    onAlgorithmChange(algorithm);
+  const handleAlgorithmChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSelectedAlgo(e.target.value);
+    onAlgorithmChange(e.target.value);
+    handleFormDataChange(e);
   };
 
   return (
@@ -26,7 +27,7 @@ const ClusteringAlgorithm = ({
           type="radio"
           name="algorithm"
           value="kMeans"
-          onChange={() => handleAlgorithmChange("kMeans")}
+          onChange={handleAlgorithmChange}
         />
         K-means
       </label>
@@ -35,12 +36,14 @@ const ClusteringAlgorithm = ({
           type="radio"
           name="algorithm"
           value="other"
-          onChange={() => handleAlgorithmChange("other")}
+          onChange={handleAlgorithmChange}
         />
         Other
       </label>
 
-      {selectedAlgo === "kMeans" && <NumberOfClusters />}
+      {selectedAlgo === "kMeans" && (
+        <NumberOfClusters handleFormDataChange={handleFormDataChange} />
+      )}
     </div>
   );
 };

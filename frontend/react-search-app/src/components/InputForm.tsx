@@ -27,9 +27,9 @@ const InputForm = () => {
     setFormData(updatedFormData);
   };
 
-  const handleSubmit = async (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLButtonElement>) => {
     e.preventDefault();
-
+    console.log(e);
     try {
       const response = await axios.post(
         "http://localhost:3000/search",
@@ -46,11 +46,13 @@ const InputForm = () => {
 
   return (
     <div>
-      <form action="" className={styles.input}>
+      <form className={styles.input}>
         <input
           type="text"
           placeholder="Eg. India"
+          name="searchString"
           className={styles.inputSearch}
+          onChange={handleFormDataChange}
         />
 
         <ClusteringAlgorithm
@@ -63,6 +65,7 @@ const InputForm = () => {
             className={styles.inputSubmit}
             type="submit"
             disabled={submitDisabled}
+            onClick={handleSubmit}
           >
             Submit
           </button>
