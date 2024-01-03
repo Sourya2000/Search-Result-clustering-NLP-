@@ -2,17 +2,22 @@ import React, { useState } from "react";
 import axios from "axios";
 import styles from "./InputForm.module.css";
 import ClusteringAlgorithm from "./ClusteringAlgorithm";
+import { useData } from "./DataContext";
 
 export interface formDataProps {
   searchString: string;
   algorithm: string;
-  kVal?: string;
+  kVal?: number;
   isOptK?: string;
 }
 
 const InputForm = () => {
   const [submitDisabled, setsubmitDisabled] = useState<boolean>(false);
-  const [formData, setFormData] = useState<formDataProps | {}>();
+  const [formData, setFormData] = useState<formDataProps | {}>({
+    algorithm: "kMeans",
+    kVal: 3,
+  });
+  const { setData } = useData();
 
   const handleAlgorithmChange = (selectedAlgo: String | null) => {
     setsubmitDisabled(selectedAlgo !== "kMeans");
@@ -32,13 +37,12 @@ const InputForm = () => {
     console.log(e);
     try {
       const response = await axios.post(
-        "http://localhost:3000/search",
+        "http://localhost:8080/search",
         formData
       );
-      console.log("Response from backend:", response.data);
-
-      // Handle the response data as needed
-      // ...
+      // console.log("Response from backend:", response.data);
+      console.log("Got Non-error reponse from backend server");
+      setData(response.data);
     } catch (error) {
       console.error("Error submitting form:", error as Error);
     }

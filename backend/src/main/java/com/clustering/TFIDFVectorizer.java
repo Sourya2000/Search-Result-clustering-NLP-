@@ -62,7 +62,7 @@ class TFIDFVectorizer {
 			wekaInstances.add(instance);
 		}
 
-		// Set the class index (e.g., the 'score' attribute)
+		// Set class index as negative number to indicate no target attribute present
 		wekaInstances.setClassIndex(-1);
 
 		return wekaInstances;
