@@ -5,7 +5,6 @@ public class Constants {
 	public static final String DOCUMENTS_COLLECTION_PATH = "src/main/resources/static/Documents";
 	
 	public static final int NO_TOP_K_DOCS_TO_SEARCH_INT = 20;
-	public static final String REQUEST_SEARCH_QUERY_STRING = "searchString";
 	
 	public static final String DOC_FIELD_EXTRACT_STRING = "docExtract";
 	public static final String DOC_FIELD_NAME_STRING = "docName";
@@ -20,10 +19,11 @@ public class Constants {
 	public static final String INPUT_PARAM_OPTIMAL_K_STRING = "isOptK";
 	public static final String INPUT_PARAM_K_VALUE_STRING = "kVal";
 	public static final String INPUT_PARAM_CLUST_ALGO_STRING = "algorithm"; 
+	public static final String INPUT_SEARCH_QUERY_STRING = "searchString";
 	
 	public static final String CLUSTERING_ALGO_KMEANS_STRING = "kMeans";
 	
 	//Custom Exceptions
 	public static final String ALOG_NOT_IN_CONFIG_STRING = "Algorithm not present in the configuration";
-	
+	public static final String REQUEST_INPUT_PARAM_NOT_CORRECT_STRING = "Input Parameters not correct/sufficent to proceed";
 }

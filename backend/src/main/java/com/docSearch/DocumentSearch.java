@@ -25,7 +25,7 @@ import com.analyser.MyCustomAnalyser;
 
 public class DocumentSearch {
 	public List<RetrievedDocument> searchTopDocuments(Map<String, Object> inputParamsMap) throws IOException, ParseException {
-		String queryString = (String) inputParamsMap.get(Constants.REQUEST_SEARCH_QUERY_STRING);
+		String queryString = (String) inputParamsMap.get(Constants.INPUT_SEARCH_QUERY_STRING);
 		int numOfTopDocuments = Constants.NO_TOP_K_DOCS_TO_SEARCH_INT;
 		
 		Path indexPath = Paths.get(Constants.INDEXED_DOCUMENTS_PATH);
