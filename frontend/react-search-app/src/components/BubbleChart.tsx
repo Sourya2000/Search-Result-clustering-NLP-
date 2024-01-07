@@ -3,6 +3,7 @@ import { ClusteredData } from "./FetchedDataInterface";
 import Highcharts from "highcharts";
 import HC_more from "highcharts/highcharts-more";
 import HighchartsReact from "highcharts-react-official";
+import convertedDataPackedBubbleFormat from "./ConvertDataToSeries";
 HC_more(Highcharts);
 
 interface BubbleChartProps {
@@ -11,7 +12,7 @@ interface BubbleChartProps {
 
 const BubbleChart: React.FC<BubbleChartProps> = ({ data }) => {
   const chartRef = useRef<Highcharts.Chart | null>(null);
-  const bubblechartOptions: any = {
+  const bubblechartOptions: Highcharts.Options = {
     chart: {
       type: "packedbubble",
     },
@@ -22,16 +23,16 @@ const BubbleChart: React.FC<BubbleChartProps> = ({ data }) => {
           gravitationalConstant: 0.05,
           splitSeries: true,
           seriesInteraction: false,
-          dragBetweenSeries: true,
+          dragBetweenSeries: false,
           parentNodeLimit: true,
         },
       },
     },
     tooltip: {
       useHTML: true,
-      pointFormat: `<b>Title:</b> {point.docName}<br>
-                    <b>Relevance score:</b> {point.score}<br>
-                    <b>Content:</b> {point.docExtract}`,
+      pointFormat: `<b>Title:</b> {point.name}<br>
+                    <b>Relevance score:</b> {point.value}<br>
+                    <b>Content:</b> {point.content}`,
     },
     title: {
       text: "Search Result Clusters",
@@ -39,21 +40,37 @@ const BubbleChart: React.FC<BubbleChartProps> = ({ data }) => {
   };
 
   useEffect(() => {
-    if (chartRef.current && data) {
-      // Update series data
-      bubblechartOptions.series = data;
+    if (!chartRef.current && data) {
+      // Chart is not yet created, create it now
 
-      // Create or update the chart
+      // Update series data
+      // Highcharts.SeriesPackedbubbleOptions
+      // Highcharts.Series;
+      const graphSeriesData: any = convertedDataPackedBubbleFormat(data);
+      // console.log(graphSeriesData);
+
+      bubblechartOptions.series = graphSeriesData;
+
+      // Create the chart
       chartRef.current = Highcharts.chart(
-        chartRef.current as any,
+        "chart-container",
         bubblechartOptions
       );
+    } else if (chartRef.current && data) {
+      const graphSeriesData: any = convertedDataPackedBubbleFormat(data);
+      // console.log(graphSeriesData);
+      // Update series data
+      chartRef.current.update({ series: graphSeriesData }, true, true);
     }
   }, [data, bubblechartOptions]);
 
   return (
     <div>
-      <HighchartsReact highcharts={Highcharts} options={bubblechartOptions} />
+      <HighchartsReact
+        highcharts={Highcharts}
+        options={bubblechartOptions}
+        containerProps={{ id: "chart-container" }}
+      />
     </div>
   );
 };

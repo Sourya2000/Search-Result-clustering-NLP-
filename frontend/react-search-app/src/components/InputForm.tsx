@@ -41,7 +41,7 @@ const InputForm = () => {
         formData
       );
       // console.log("Response from backend:", response.data);
-      console.log("Got Non-error reponse from backend server");
+      console.log("Got Non-error response from backend server");
       setData(response.data);
     } catch (error) {
       console.error("Error submitting form:", error as Error);
