@@ -23,8 +23,7 @@ public class ClusterDocuments {
 		  	ClusterAlgorithm clusterAlgoObj = clusterAlgorithmClass.getDeclaredConstructor().newInstance();
 			return clusterAlgoObj.clusterDocuments(retrievedDocuments, inputParamsMap);
 		}else {
-			System.out.println("Algorithm not present in the configuration");
-			return null;
+			throw new Exception(Constants.ALOG_NOT_IN_CONFIG_STRING);
 		}
 		
 	}

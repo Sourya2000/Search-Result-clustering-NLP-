@@ -5,6 +5,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.lucene.analysis.custom.CustomAnalyzer;
 import org.apache.lucene.document.Document;
@@ -23,7 +24,10 @@ import com.Constants.Constants;
 import com.analyser.MyCustomAnalyser;
 
 public class DocumentSearch {
-	public List<RetrievedDocument> searchTopDocuments(String queryString, int numOfTopDocuments) throws IOException, ParseException {
+	public List<RetrievedDocument> searchTopDocuments(Map<String, Object> inputParamsMap) throws IOException, ParseException {
+		String queryString = (String) inputParamsMap.get(Constants.INPUT_SEARCH_QUERY_STRING);
+		int numOfTopDocuments = Constants.NO_TOP_K_DOCS_TO_SEARCH_INT;
+		
 		Path indexPath = Paths.get(Constants.INDEXED_DOCUMENTS_PATH);
 		Directory iReader = FSDirectory.open(indexPath);
 		DirectoryReader directoryReader = DirectoryReader.open(iReader);		

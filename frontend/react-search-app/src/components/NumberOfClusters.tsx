@@ -18,7 +18,7 @@ const NumberOfClusters = ({ handleFormDataChange }: NumberOfClustersProps) => {
         <input
           type="radio"
           name="kVal"
-          value="3"
+          value={3}
           checked
           onChange={handleFormDataChange}
         />
@@ -28,7 +28,7 @@ const NumberOfClusters = ({ handleFormDataChange }: NumberOfClustersProps) => {
         <input
           type="radio"
           name="kVal"
-          value="4"
+          value={4}
           onChange={handleFormDataChange}
         />
         4 Clusters
@@ -37,7 +37,7 @@ const NumberOfClusters = ({ handleFormDataChange }: NumberOfClustersProps) => {
         <input
           type="radio"
           name="kVal"
-          value="5"
+          value={5}
           onChange={handleFormDataChange}
         />
         5 Clusters

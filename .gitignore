@@ -25,3 +25,7 @@ replay_pid*
 backend/src/main/resources/static/Wikipedia_topics/Wikipedia_topics
 backend/src/main/resources/static/IndexedDocuments/
 
+*.cfe
+*.cfs
+*.si
+backend/src/main/resources/static/IndexedDocuments/segments_1
