@@ -7,15 +7,16 @@ import { useData } from "./DataContext";
 export interface formDataProps {
   searchString: string;
   algorithm: string;
-  kVal?: number;
+  kVal?: string;
   isOptK?: string;
 }
 
 const InputForm = () => {
-  const [submitDisabled, setsubmitDisabled] = useState<boolean>(false);
-  const [formData, setFormData] = useState<formDataProps | {}>({
+  const [submitDisabled, setsubmitDisabled] = useState<boolean>(true);
+  const [formData, setFormData] = useState<formDataProps>({
     algorithm: "kMeans",
-    kVal: 3,
+    kVal: "3",
+    searchString: "",
   });
   const { setData } = useData();
 
@@ -24,7 +25,7 @@ const InputForm = () => {
   };
 
   const handleFormDataChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const prevFormData = formData || {};
+    const prevFormData = formData;
     const updatedFormData = {
       ...prevFormData,
       [e.target.name]: e.target.value,
@@ -32,7 +33,7 @@ const InputForm = () => {
     setFormData(updatedFormData);
   };
 
-  const handleSubmit = async (e: React.FormEvent<HTMLButtonElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log(e);
     try {
@@ -48,9 +49,14 @@ const InputForm = () => {
     }
   };
 
+  const isInputValid = () => {
+    // Check if searchString is not empty or contains only spaces
+    return formData.searchString.trim() !== "";
+  };
+
   return (
     <div>
-      <form className={styles.input}>
+      <form className={styles.input} onSubmit={handleSubmit}>
         <input
           type="text"
           placeholder="Eg. India"
@@ -67,10 +73,9 @@ const InputForm = () => {
 
         <div>
           <button
-            className={styles.inputSubmit}
+            // className={styles.inputSubmit}
             type="submit"
-            disabled={submitDisabled}
-            onClick={handleSubmit}
+            disabled={submitDisabled || !isInputValid()}
           >
             Submit
           </button>
