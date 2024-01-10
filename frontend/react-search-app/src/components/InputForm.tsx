@@ -55,6 +55,7 @@ const InputForm = () => {
           type="text"
           placeholder="Eg. India"
           name="searchString"
+          required
           className={styles.inputSearch}
           onChange={handleFormDataChange}
         />
