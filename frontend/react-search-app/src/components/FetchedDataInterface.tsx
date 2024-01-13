@@ -3,6 +3,7 @@ export interface Document {
   cluster: number;
   docName: string;
   docExtract: string;
+  coordinates: [number, number];
 }
 
 export interface ClusteredData {

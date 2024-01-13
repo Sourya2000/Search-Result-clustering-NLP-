@@ -3,7 +3,7 @@ import { ClusteredData } from "./FetchedDataInterface";
 import Highcharts from "highcharts";
 import HC_more from "highcharts/highcharts-more";
 import HighchartsReact from "highcharts-react-official";
-import convertedDataPackedBubbleFormat from "./ConvertDataToSeries";
+import convertedDataPackedBubbleFormat from "./BubbleChartHelper";
 HC_more(Highcharts);
 
 interface BubbleChartProps {
@@ -34,9 +34,10 @@ const BubbleChart: React.FC<BubbleChartProps> = ({ data }) => {
                     <b>Relevance score:</b> {point.value}<br>
                     <b>Content:</b> {point.content}`,
     },
-    title: {
-      text: "Search Result Clusters",
-    },
+    // title: {
+    //   text: "Packed Bubble Chart",
+    // },
+    title: undefined,
   };
 
   useEffect(() => {
