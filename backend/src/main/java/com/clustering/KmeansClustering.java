@@ -11,6 +11,8 @@ import com.docSearch.RetrievedDocument;
 import weka.clusterers.SimpleKMeans;
 import weka.core.Instances;
 import weka.core.SelectedTag;
+import weka.filters.Filter;
+import weka.filters.unsupervised.attribute.PrincipalComponents;
 
 class KmeansClustering extends ClusterAlgorithm {
 
@@ -35,7 +37,7 @@ class KmeansClustering extends ClusterAlgorithm {
 		SimpleKMeans kMeans = getKMeansModel(numberOfClusters, inputDataInstances);
 
 		int[] labels = kMeans.getAssignments();
-		return constructResponse(retrievedDocuments, labels);
+		return constructResponse(retrievedDocuments, labels, inputDataInstances);
 	}
 
 	private SimpleKMeans getKMeansModel(int numberOfClusters, Instances inpInstances) throws Exception {
@@ -49,7 +51,7 @@ class KmeansClustering extends ClusterAlgorithm {
 	}
 
 	private Map<Integer, List<Map<String, Object>>> constructResponse(List<RetrievedDocument> retrievedDocuments,
-			int[] labels) {
+			int[] labels, Instances inputDataInstances) throws Exception {
 
 		String[] docExtractList = retrievedDocuments.stream().map(RetrievedDocument::getContent).toArray(String[]::new);
 		String[] docNameList = retrievedDocuments.stream().map(RetrievedDocument::getTitle).toArray(String[]::new);
@@ -58,14 +60,28 @@ class KmeansClustering extends ClusterAlgorithm {
 			docScoreList[i] = retrievedDocuments.get(i).getScore();
 		}
 
+		// Dimensionality Reduction --- to get 2 co-ordinates to visualize the data
+		PrincipalComponents pcaFilter = new PrincipalComponents();
+		pcaFilter.setInputFormat(inputDataInstances);
+		// use of -1 for setMaximumAttributeNames ensures that all dimensions are
+		// retained before applying the filter.
+		pcaFilter.setMaximumAttributeNames(-1);
+		pcaFilter.setMaximumAttributes(2); // Set the number of dimensions to 2
+		Instances reducedData = Filter.useFilter(inputDataInstances, pcaFilter);
+
 		// Add associated cluster to each data instance
 		List<Map<String, Object>> responseDataStruct = new ArrayList<>();
 		for (int i = 0; i < docExtractList.length; i++) {
 			Map<String, Object> entry = new HashMap<>();
-			entry.put(Constants.DOC_FIELD_NAME_STRING, docNameList[i]);
-			entry.put(Constants.DOC_FIELD_EXTRACT_STRING, docExtractList[i]);
-			entry.put(Constants.DOC_FIELD_SCORE_STRING, docScoreList[i]);
-			entry.put(Constants.DOC_FIELD_CLUSTER_STRING, labels[i]);
+			entry.put(Constants.DOC_FIELD_NAME_STRING, docNameList[i]); // Name of the Doc
+			entry.put(Constants.DOC_FIELD_EXTRACT_STRING, docExtractList[i]); // Content of the Doc
+			entry.put(Constants.DOC_FIELD_SCORE_STRING, docScoreList[i]); // Relevance Score
+			entry.put(Constants.DOC_FIELD_CLUSTER_STRING, labels[i]); // Cluster Assignment
+
+			// Add the reduced coordinates to the entry
+			double[] coordinates = reducedData.instance(i).toDoubleArray();
+			entry.put(Constants.DOC_FIELD_COORDINATES_STRING, coordinates);
+
 			responseDataStruct.add(entry);
 		}
 

@@ -10,6 +10,7 @@ public class Constants {
 	public static final String DOC_FIELD_NAME_STRING = "docName";
 	public static final String DOC_FIELD_SCORE_STRING = "score";
 	public static final String DOC_FIELD_CLUSTER_STRING = "cluster";
+	public static final String DOC_FIELD_COORDINATES_STRING = "coordinates";
 
 	public static final String DOC_FILE_EXTENTSION_STRING = ".txt";
 	public static final String DOC_FILE_EXTN_REPLACEMENT_STRING = "";
