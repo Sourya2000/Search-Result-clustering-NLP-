@@ -13,11 +13,9 @@ interface DataProviderProps {
 }
 
 export const DataProvider: React.FC<DataProviderProps> = ({ children }) => {
-  const [fetchedData, setFetchedData] = useState<ClusteredData | undefined>(
-    undefined
-  );
+  const [fetchedData, setFetchedData] = useState<ClusteredData>();
 
-  const setData = (data: any) => {
+  const setData = (data: ClusteredData) => {
     setFetchedData(data);
   };
 

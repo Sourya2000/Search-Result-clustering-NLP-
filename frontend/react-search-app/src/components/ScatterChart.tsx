@@ -1,18 +1,14 @@
-import React, { useEffect, useRef } from "react";
-import { ClusteredData } from "./FetchedDataInterface";
+import React, { useEffect, useState } from "react";
 import Highcharts from "highcharts";
 import HC_more from "highcharts/highcharts-more";
 import HighchartsReact from "highcharts-react-official";
 import { convertedDataScatterChartFormat } from "./ScatterChartHelper";
+import { useData } from "./DataContext";
 HC_more(Highcharts);
 
-interface ScatterChartProps {
-  data: ClusteredData | undefined;
-}
-
-const ScatterChart: React.FC<ScatterChartProps> = ({ data }) => {
-  const chartRef = useRef<Highcharts.Chart | null>(null);
-  const scatterChartOptions: any = {
+const ScatterChart = () => {
+  const { fetchedData } = useData();
+  const [scatterChartOptions, setScatterChartOptions] = useState<any>({
     chart: {
       type: "scatter",
       zoomType: "xy",
@@ -74,35 +70,18 @@ const ScatterChart: React.FC<ScatterChartProps> = ({ data }) => {
     },
     series: undefined,
     // colors: undefined,
-  };
+  });
 
   useEffect(() => {
-    if (!chartRef.current && data) {
-      // Chart is not yet created, create it now
-      const graphSeriesData: any = convertedDataScatterChartFormat(data);
-      console.log(data);
-      console.log(graphSeriesData);
-      scatterChartOptions.series = graphSeriesData;
-
-      // Create the chart
-      chartRef.current = Highcharts.chart(
-        "chart-container",
-        scatterChartOptions
-      );
-    } else if (chartRef.current && data) {
-      const graphSeriesData: any = convertedDataScatterChartFormat(data);
-      // Update series data
-      chartRef.current.update({ series: graphSeriesData }, true, true);
+    if (fetchedData) {
+      const graphSeriesData: any = convertedDataScatterChartFormat(fetchedData);
+      setScatterChartOptions({ series: graphSeriesData });
     }
-  }, [data, scatterChartOptions]);
+  }, [fetchedData]);
 
   return (
     <div>
-      <HighchartsReact
-        highcharts={Highcharts}
-        options={scatterChartOptions}
-        containerProps={{ id: "chart-container" }}
-      />
+      <HighchartsReact highcharts={Highcharts} options={scatterChartOptions} />
     </div>
   );
 };

@@ -9,7 +9,7 @@ import Tab from "@mui/material/Tab";
 
 const RightPanel: React.FC = () => {
   const { fetchedData } = useData();
-  const [value, setValue] = React.useState(0);
+  const [value, setValue] = useState(0);
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
@@ -29,8 +29,8 @@ const RightPanel: React.FC = () => {
           <Tab label="Scatter Chart" />
         </Tabs>
       </Box>
-      {value === 0 && <BubbleChart data={fetchedData} />}
-      {value === 1 && <ScatterChart data={fetchedData} />}
+      {value === 0 && <BubbleChart />}
+      {value === 1 && <ScatterChart />}
     </div>
   );
 };
