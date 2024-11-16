@@ -75,16 +75,21 @@ Machine Learning library like WEKA 3.8 or Python Sk-learn.
 ## **Visualization**
 Here are some images from the clustering process:
 
-### Home Page
-![Home Page](extracted_images/page1_img1.png)
+### **Home Page**
+![Home Page](doc/images/home_page.png)
 
-### Input & Preprocessing
-![Preprocessing](extracted_images/page2_img1.png)
-![Input Parameters](extracted_images/page2_img2.png)
-![Document Vectorization](extracted_images/page2_img3.png)
+---
 
-### Clustering and Output
-![Clustering Visualization](extracted_images/page3_img1.png)
-![Scatter Plot](extracted_images/page3_img2.png)
-![Cluster Hover Information](extracted_images/page3_img3.png)
-![Bubble Plot](extracted_images/page3_img4.png)
+### **Input & Preprocessing**
+![Input Parameters](doc/images/input_params.png)
+
+---
+
+### **Clustering and Output**
+![Packed Bubble Plot](doc/images/packed_bubble.png)
+![Cluster Hover Information](doc/images/pb_hover_info.png)
+</br>
+![Scatter Plot](doc/images/scatter_plot.png)
+
+
+---
