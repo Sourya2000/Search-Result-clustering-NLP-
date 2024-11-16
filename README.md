@@ -33,6 +33,8 @@ Machine Learning library like WEKA 3.8 or Python Sk-learn.
 1. Run the `document_data_generator.py` file to generate **1000 .txt documents**.
 2. These documents are indexed using the **Lucene library** (inverted indexing) after the server is started.  
    - **Note**: Before indexing, the indexing directory is cleared.
+     
+![Home Page](doc/images/home_page.png)
 
 ---
 
@@ -44,6 +46,8 @@ Machine Learning library like WEKA 3.8 or Python Sk-learn.
 2. Input parameters are verified:
    - If input values are valid, processing continues.
    - If input is invalid, no display is shown.
+
+![Input Parameters](doc/images/input_params.png)
 
 ---
 
@@ -61,35 +65,27 @@ Machine Learning library like WEKA 3.8 or Python Sk-learn.
 
 ## **Output**
 1. The frontend is built using **React TypeScript (ReactTs)**.
-2. The output is displayed as:
-   - **Clusters**.
-   - **Scatterplot**.
-3. Additional details:
-   - Hovering over clusters shows the **data instances** grouped within, along with their:
-     - Title.
-     - Content.
-     - Relevance score.
+2. Clusters are visualized using:
+   - **Packed Bubble plot** (default view)
+     
+   ![Packed Bubble Plot](doc/images/packed_bubble.png)
+      
+      - Additional details:
+         - Hovering over clusters shows the **data instances** grouped within, along with their:
+            - Title.
+            - Content.
+            - Relevance score.
 
----
+   ![Cluster Hover Information](doc/images/pb_hover_info.png)
 
-## **Visualization**
-Here are some images from the clustering process:
+    </br>
 
-### **Home Page**
-![Home Page](doc/images/home_page.png)
+   - **Scatter Plot**
 
----
+   ![Scatter Plot](doc/images/scatter_plot.png)    
 
-### **Input & Preprocessing**
-![Input Parameters](doc/images/input_params.png)
 
----
 
-### **Clustering and Output**
-![Packed Bubble Plot](doc/images/packed_bubble.png)
-![Cluster Hover Information](doc/images/pb_hover_info.png)
-</br>
-![Scatter Plot](doc/images/scatter_plot.png)
 
 
 ---
