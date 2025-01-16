@@ -14,14 +14,13 @@ const BubbleChart = () => {
       chart: {
         type: "packedbubble",
       },
-      series: undefined,
       plotOptions: {
         packedbubble: {
           layoutAlgorithm: {
-            gravitationalConstant: 0.05,
+            gravitationalConstant: 0.25,
             splitSeries: true,
-            seriesInteraction: false,
-            dragBetweenSeries: false,
+            // seriesInteraction: false,
+            // dragBetweenSeries: false,
             parentNodeLimit: true,
           },
         },
@@ -32,10 +31,8 @@ const BubbleChart = () => {
                       <b>Relevance score:</b> {point.value}<br>
                       <b>Content:</b> {point.content}`,
       },
-      // title: {
-      //   text: "Packed Bubble Chart",
-      // },
       title: undefined,
+      series: undefined
     });
 
   useEffect(() => {

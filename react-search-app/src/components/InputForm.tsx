@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import styles from "./InputForm.module.css";
 import ClusteringAlgorithm from "./ClusteringAlgorithm";
 import { useData } from "./DataContext";
+import { color } from "highcharts";
 
 export interface formDataProps {
   searchString: string;
@@ -12,19 +13,18 @@ export interface formDataProps {
 }
 
 const InputForm = () => {
-  const [submitDisabled, setsubmitDisabled] = useState<boolean>(true);
+  const [enabled, setSubmit] = useState<boolean>(true);
+  const [errorMsg, setErrorMsg] = useState<string>("");
   const [formData, setFormData] = useState<formDataProps>({
     algorithm: "kMeans",
-    kVal: "3",
+    kVal: "1",
     searchString: "",
   });
   const { setData } = useData();
-
-  const handleAlgorithmChange = (selectedAlgo: String | null) => {
-    setsubmitDisabled(selectedAlgo !== "kMeans");
-  };
+  const [selectedOption, setselectedOption] = useState<number>(1);
 
   const handleFormDataChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setErrorMsg("")
     const prevFormData = formData;
     const updatedFormData = {
       ...prevFormData,
@@ -36,17 +36,25 @@ const InputForm = () => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log(e);
+    
+    setSubmit(false)
     try {
       const response = await axios.post(
         "http://localhost:8080/search",
         formData
       );
-      // console.log("Response from backend:", response.data);
-      console.log("Got Non-error response from backend server");
-      setData(response.data);
+      if(response.status == 500) {
+        setErrorMsg("Not enough training instances, try another keyword")
+      } else {
+        console.log("Response from backend:", response);
+        setData(response.data);
+        setErrorMsg("Hover on the bubble chart to see data points in the cluster")
+      }
     } catch (error) {
+      setErrorMsg("Not enough training instances, try another keyword")
       console.error("Error submitting form:", error as Error);
     }
+    setSubmit(true)
   };
 
   const isInputValid = () => {
@@ -54,33 +62,37 @@ const InputForm = () => {
     return formData.searchString.trim() !== "";
   };
 
+  const handleClustersInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+    console.log(e.target.value)
+    setselectedOption(Number(e.target.value));
+    handleFormDataChange(e);
+  };
+
   return (
     <div>
-      <form className={styles.input} onSubmit={handleSubmit}>
+      <p> Enter the query and number of clusters </p>
+      <form className={styles.input} onSubmit={handleSubmit} onClick={() => {setErrorMsg("")}}>
         <input
           type="text"
-          placeholder="Eg. India"
+          placeholder="Enter a query. eg.: baby"
           name="searchString"
           required
           className={styles.inputSearch}
           onChange={handleFormDataChange}
         />
 
-        <ClusteringAlgorithm
-          onAlgorithmChange={handleAlgorithmChange}
-          handleFormDataChange={handleFormDataChange}
-        />
-
-        <div>
+          <input type="number" name="kVal" min={1} max={15} 
+          className={styles.inputSearch2}
+          onChange = {handleClustersInput} />
           <button
-            // className={styles.inputSubmit}
+            className={styles.inputSubmit}
             type="submit"
-            disabled={submitDisabled || !isInputValid()}
+            disabled={!enabled || !isInputValid()}
           >
             Submit
           </button>
-        </div>
       </form>
+      <p style={{color: "red"}}>{errorMsg}</p>
     </div>
   );
 };

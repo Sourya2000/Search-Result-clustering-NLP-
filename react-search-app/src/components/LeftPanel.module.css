@@ -1,0 +1,7 @@
+.leftPanel {
+  padding-top: 15rem;
+  flex: 3;
+  /* background-color: rgb(218, 255, 209); */
+  border-right: 2px black solid;
+  overflow: auto;
+}

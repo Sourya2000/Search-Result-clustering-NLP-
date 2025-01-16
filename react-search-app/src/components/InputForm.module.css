@@ -9,11 +9,22 @@
   width: 50%;
   height: 10px;
   border-radius: 30px;
-  padding: 20px 30px;
-  font-size: 20px;
+  padding: 15px;
+  font-size: 15px;
   border: none;
   transition: 0.2s;
-  box-shadow: inset 0 0 5px black;
+  box-shadow: inset 0 0 5px rgb(191, 190, 190);
+}
+
+.inputSearch2 {
+  width: 10%;
+  height: 10px;
+  border-radius: 30px;
+  padding: 15px;
+  font-size: 15px;
+  border: none;
+  transition: 0.2s;
+  box-shadow: inset 0 0 5px rgb(191, 190, 190);
 }
 
 .inputSearch:focus {
@@ -26,7 +37,7 @@
   width: 30;
   height: 30px;
   margin: 12px;
-  border-radius: 50px;
+  /* border-radius: 20px; */
   right: 0px;
   border: none;
   font-size: 15px;

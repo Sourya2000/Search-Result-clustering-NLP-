@@ -7,18 +7,29 @@ export interface NumberOfClustersProps {
 
 const NumberOfClusters = ({ handleFormDataChange }: NumberOfClustersProps) => {
   const [selectedOption, setselectedOption] = useState<string>("3");
+  
   const handleRadioButton = (e: React.ChangeEvent<HTMLInputElement>) => {
+    console.log(e.target.value)
+    setselectedOption(e.target.value);
+    handleFormDataChange(e);
+  };
+
+  const handleClustersInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+    console.log(e.target.value)
     setselectedOption(e.target.value);
     handleFormDataChange(e);
   };
   return (
-    <div className={styles.radioBox}>
-      <h4 className={styles.radioBoxHeading}>Number of Clusters</h4>
+    <div>
+      <input type="number" name="kVal" min={1} max={15}  onChange = {handleClustersInput} />
+
       {/* <span className={styles.warningText}>
         *If given number of clusters is less than feature vectors dimension,
         then floor of the square root of the feature vector dimension will be
         taken as the number of clusters.
-      </span> */}
+        </span> */}
+      {/* <p>Choose cluster size</p> */}
+      {/* 
       <label>
         <input
           type="radio"
@@ -58,7 +69,7 @@ const NumberOfClusters = ({ handleFormDataChange }: NumberOfClustersProps) => {
           onChange={handleRadioButton}
         />
         Optimal Clusters
-      </label>
+      </label> */}
     </div>
   );
 };
