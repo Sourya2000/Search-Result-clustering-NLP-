@@ -12,7 +12,9 @@ public class MyApplicationRunner implements ApplicationRunner {
 
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
-//      Indexing Document Collections at start of the server 
+
+//      Indexing Document Collections at start of the server
+		System.out.println("Starting MyApplicationRunner.run()");
 		System.out.println(Constants.SERVER_START_INDEXING_START_STRING);
 		IndexDocumentCollection.indexDocuments();
 		System.out.println(Constants.INDEXING_COMPLETED_STRING);

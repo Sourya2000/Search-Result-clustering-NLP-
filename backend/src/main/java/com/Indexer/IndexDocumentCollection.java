@@ -28,6 +28,7 @@ import com.analyser.MyCustomAnalyser;
 public class IndexDocumentCollection {
 
 	public static void indexDocuments() throws IOException {
+		System.out.println("Starting indexDocuments ");
 		Path indexPath = Paths.get(Constants.INDEXED_DOCUMENTS_PATH);
 		Directory indexDir = FSDirectory.open(indexPath);
 
