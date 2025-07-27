@@ -1,0 +1,4 @@
+Unwinding may refer to:
+
+Removing frames from a call stack
+Loop unwinding, a software optimization technique

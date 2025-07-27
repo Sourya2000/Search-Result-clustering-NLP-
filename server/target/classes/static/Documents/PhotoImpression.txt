@@ -1,0 +1,1 @@
+PhotoImpression is an image manager by ArcSoft for Mac OS X and Windows. It is often bundled with Epson all-in-one printers. The program's interface on Mac OS X looks exactly like a Windows program.

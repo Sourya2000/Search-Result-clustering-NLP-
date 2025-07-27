@@ -1,0 +1,3 @@
+Sectility is the ability of a mineral to be cut into thin pieces with a knife. Minerals that are not sectile will be broken into rougher pieces when cut. Metals and paper are sectile.
+Sectility can be used to distinguish minerals of similar appearance, and is a form of tenacity. For example, gold is sectile but pyrite ("fool's gold") is not.
+Sectility in metals is a result of metallic bonding, where valence (bonding) electrons are delocalized and can flow freely between atoms, rather than being shared between specific pairs or groups of atoms, as in covalent bonding.
