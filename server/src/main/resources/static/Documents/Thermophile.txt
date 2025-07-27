@@ -1,0 +1,5 @@
+A thermophile is an organism—a type of extremophile—that thrives at relatively high temperatures, between 41 and 122 °C (106 and 252 °F). Many thermophiles are archaea, though some of them are bacteria and fungi. Thermophilic eubacteria are suggested to have been among the earliest bacteria.Thermophiles are found in various geothermally heated regions of the Earth, such as hot springs like those in Yellowstone National Park (see image) and deep sea hydrothermal vents, as well as decaying plant matter, such as peat bogs and compost.
+Thermophiles can survive at high temperatures, whereas other bacteria or archaea would be damaged and sometimes killed if exposed to the same temperatures.
+The enzymes in thermophiles function at high temperatures. Some of these enzymes are used in molecular biology, for example the Taq polymerase used in PCR. "Thermophile" is derived from the Greek: θερμότητα (thermotita), meaning heat, and Greek: φίλια (philia), love.
+Comparative surveys suggest that thermophile diversity is principally driven by pH, not temperature.
+

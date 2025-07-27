@@ -1,0 +1,2 @@
+IntegRate was a software product written in C++ based on a pipe-lined high performance architecture for handling batch rating of telecommunications using call detail records (CDR), developed by the German software company Solution 42.
+
