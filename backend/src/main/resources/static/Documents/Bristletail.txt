@@ -1,7 +1,0 @@
-Several wingless hexapods are known as bristletails:
-
-Class Insecta
-Order Archaeognatha (or Microcoryphia) – insect order that includes the jumping bristletails and rock bristletails
-Order Zygentoma – insect order that includes silverfish, firebrats, and alliesClass Entognatha
-Order Diplura – the two-pronged bristletailsOther
-Thysanura – deprecated insect order of silverfish and allies, now separated into Zygentoma and Archeognatha

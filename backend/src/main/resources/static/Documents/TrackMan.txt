@@ -1,1 +1,0 @@
-The TrackMan is a radar system that uses Doppler technology to track and record 3D characteristics of a sports ball in motion.

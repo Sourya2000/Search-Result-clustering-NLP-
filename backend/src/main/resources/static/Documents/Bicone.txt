@@ -1,2 +1,0 @@
-In geometry, a bicone or dicone (from Latin: bi-, and Greek: di-, both meaning "two") is the three-dimensional surface of revolution of a rhombus around one of its axes of symmetry. Equivalently, a bicone is the surface created by joining two congruent, right, circular cones at their bases.
-A bicone has circular symmetry and orthogonal bilateral symmetry.

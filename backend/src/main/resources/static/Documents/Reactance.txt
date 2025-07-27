@@ -1,6 +1,0 @@
-Reactance may refer to:
-
-Electrical reactance, the opposition to a change in voltage due to capacitance (capacitive reactance) or in current due to inductance (inductive reactance); the imaginary component of AC impedance
-Magnetic reactance, a similar effect in magnetism
-Reactance (psychology), an emotional reaction to pressure or persuasion that results in the strengthening or adoption of a contrary belief
-

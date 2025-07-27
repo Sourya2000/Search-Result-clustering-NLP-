@@ -1,6 +1,0 @@
-RAISE can refer to :
-
-Rapid Acquisition Imaging Spectrograph Experiment, a NASA Heliophysics project
-Rebuilding American Infrastructure with Sustainability and Equity, a United State federal government program
-Redundant Array of Independent Silicon Elements, a data integrity feature in some solid-state disks
-Rigorous Approach to Industrial Software Engineering, a set of tools for software development

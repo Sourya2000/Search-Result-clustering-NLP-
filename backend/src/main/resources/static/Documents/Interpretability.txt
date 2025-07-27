@@ -1,2 +1,0 @@
-In mathematical logic, interpretability is a relation between formal theories that expresses the possibility of interpreting or translating one into the other.
-

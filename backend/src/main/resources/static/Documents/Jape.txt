@@ -1,8 +1,0 @@
-Jape is a synonym for a practical joke.
-Jape or JAPE may also refer to:
-
-Jape (band), an Irish electronic/rock band
-JAPE (linguistics), a transformation language widely used in natural language processing
-JAPE, an automated pun generator
-Jape (software), a Java-based proof assistant
-Java Annotations Pattern Engine – see General Architecture for Text Engineering

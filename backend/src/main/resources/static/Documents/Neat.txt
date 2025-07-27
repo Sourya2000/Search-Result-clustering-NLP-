@@ -1,7 +1,0 @@
-Neat may refer to: 
-
-Neat (bartending), a single, unmixed liquor served in a rocks glass
-Neat, an old term for horned oxen
-Neat Records, a British record label
-Neuroevolution of augmenting topologies (NEAT), a genetic algorithm (GA) for the generation of evolving artificial neural networks
-

@@ -19,13 +19,16 @@
 *.tar.gz
 *.rar
 
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 replay_pid*
-backend/src/main/resources/static/Wikipedia_topics/Wikipedia_topics
-backend/src/main/resources/static/IndexedDocuments/
+
+server/src/main/resources/static/Wikipedia_topics/Wikipedia_topics
+server/src/main/resources/static/IndexedDocuments/
+server/src/main/resources/static/Documents/
+server/src/main/resources/static/IndexedDocuments/segments_1
 
 *.cfe
 *.cfs
 *.si
-backend/src/main/resources/static/IndexedDocuments/segments_1
+
+client/node_modules/

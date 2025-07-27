@@ -1,6 +1,0 @@
-In formal methods of computer science, a paramorphism 
-(from Greek παρά, meaning "close together") 
-is an extension of the concept of catamorphism first introduced by Lambert Meertens to deal with a form which “eats its argument and keeps it too”, 
-as exemplified by the factorial function. Its categorical dual is the apomorphism.
-It is a more convenient version of catamorphism in that it gives the combining step function immediate access not only to the result value recursively computed from each recursive subobject, but the original subobject itself as well.
-Example Haskell implementation, for lists:
