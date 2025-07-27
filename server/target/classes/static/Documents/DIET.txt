@@ -1,0 +1,4 @@
+DIET is a software for grid-computing. As middleware, DIET sits between the operating system (which handles the details of the hardware) and the application software (which deals with the specific computational task at hand). DIET was created in 2000. It was designed for high-performance computing. It is currently developed by INRIA, École Normale Supérieure de Lyon, CNRS, Claude Bernard University Lyon 1, SysFera. It is open-source software released under the CeCILL license.
+Like NetSolve/GridSolve and Ninf, DIET is compliant with the GridRPC standard from the Open Grid Forum.The aim of the DIET project is to develop a set of tools to build computational servers. The distributed resources are managed in a transparent way through the middleware. It can work with workstations, clusters, Grids and clouds.
+DIET is used to manage the Décrypthon Grid installed by IBM in six French universities (Bordeaux 1, Lille 1, Paris 6, ENS Lyon, Crihan in Rouen, Orsay).
+

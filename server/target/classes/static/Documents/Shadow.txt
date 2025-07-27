@@ -1,0 +1,1 @@
+A shadow is a dark area where light from a light source is blocked by an object. It occupies all of the three-dimensional volume behind an object with light in front of it. The cross section of a shadow is a two-dimensional silhouette, or a reverse projection of the object blocking the light.

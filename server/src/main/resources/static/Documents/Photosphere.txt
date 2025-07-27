@@ -1,0 +1,3 @@
+The photosphere is a star's outer shell from which light is radiated. It extends into a star's surface until the plasma becomes opaque, equivalent to an optical depth of approximately 2⁄3, or equivalently, a depth from which 50% of light will escape without being scattered.
+A photosphere is the deepest region of a luminous object, usually a star, that is transparent to photons of certain wavelengths.
+

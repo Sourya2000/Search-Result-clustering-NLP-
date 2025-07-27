@@ -1,0 +1,1 @@
+In the mathematical field of knot theory, an unlink is a link that is equivalent (under ambient isotopy) to finitely many disjoint circles in the plane.The two-component unlink, consisting of two non-interlinked unknots, is the simplest possible unlink.

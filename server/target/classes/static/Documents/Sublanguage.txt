@@ -1,0 +1,1 @@
+A sublanguage is a subset of a language. Sublanguages occur in natural language, computer programming language, and relational databases.
